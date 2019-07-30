@@ -1,22 +1,25 @@
 package com.example.androiddaggersample.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import com.example.androiddaggersample.R
-import com.example.androiddaggersample.model.DataModel
-import dagger.android.AndroidInjection
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
+import com.example.androiddaggersample.databinding.ActivityMainBinding
+import com.example.androiddaggersample.viewmodel.MainViewModel
+import dagger.android.support.DaggerAppCompatActivity
 import javax.inject.Inject
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : DaggerAppCompatActivity() {
+
     @Inject
-    lateinit var dataModel: DataModel
+    lateinit var binding: ActivityMainBinding
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        AndroidInjection.inject(this)
 
-        Log.d("AndroidDaggerSample","MainActivity:: ${dataModel.onLoad()}")
+        val viewModel = ViewModelProviders.of(this, viewModelFactory)[MainViewModel::class.java]
+        binding.viewModel = viewModel
     }
 }
