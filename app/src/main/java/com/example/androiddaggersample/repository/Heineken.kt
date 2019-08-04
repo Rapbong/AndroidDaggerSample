@@ -4,8 +4,8 @@ import android.util.Log
 import com.example.androiddaggersample.TAG
 import javax.inject.Inject
 
-class Feelight @Inject constructor(): Fly {
+class Heineken @Inject constructor(): Beer {
     override fun onLoad() {
-        Log.d(TAG, "Feelight:: onLoad")
+        Log.d(TAG, "Heineken:: onLoad")
     }
 }

@@ -1,5 +1,5 @@
 package com.example.androiddaggersample.repository
 
-interface Fly {
+interface Beer {
     fun onLoad()
 }
