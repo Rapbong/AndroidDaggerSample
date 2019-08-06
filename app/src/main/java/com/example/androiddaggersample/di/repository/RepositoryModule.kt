@@ -1,16 +1,32 @@
 package com.example.androiddaggersample.di.repository
 
-import com.example.androiddaggersample.repository.Heineken
-import com.example.androiddaggersample.repository.Beer
-import com.example.androiddaggersample.repository.Tsingtao
-import dagger.Binds
+import com.example.androiddaggersample.repository.data.GithubService
 import dagger.Module
+import dagger.Provides
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Singleton
 
 @Module
-abstract class RepositoryModule {
-    @Binds
-    abstract fun heineken(heineken: Heineken): Beer
+class RepositoryModule {
+    @Singleton
+    @Provides
+    fun provideGithubService(): GithubService {
+        return Retrofit.
+            Builder().baseUrl("https://api.github.com/")
+            .client(provideHttpClient())
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(GithubService::class.java)
+    }
 
-    @Binds
-    abstract fun tsingtao(tsingtao: Tsingtao): Beer
+    @Singleton
+    @Provides
+    fun provideHttpClient(): OkHttpClient {
+        return OkHttpClient.Builder()
+            .addInterceptor(HttpLoggingInterceptor())
+            .build()
+    }
 }
