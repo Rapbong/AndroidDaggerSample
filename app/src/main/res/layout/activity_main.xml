@@ -11,14 +11,25 @@
             tools:context=".ui.MainActivity">
 
         <Button
+                android:id="@+id/button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Button"
                 android:onClick="@{() -> viewModel.onClick()}"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintVertical_chainStyle="packed"
+                app:layout_constraintBottom_toTopOf="@id/recycler_view"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent"/>
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:scrollbars="vertical"
+                app:layout_constraintTop_toBottomOf="@id/button"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
