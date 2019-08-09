@@ -10,10 +10,10 @@ import com.example.androiddaggersample.repository.data.Repo
 import javax.inject.Inject
 
 class GithubRepository @Inject constructor(private val githubService: GithubService){
-    internal fun onload() : LiveData<PagedList<Repo>> {
-        Log.d(TAG, "GithubRepository:: onload")
+    internal fun search(keyword: String): LiveData<PagedList<Repo>> {
+        Log.d(TAG, "GithubRepository:: search")
 
-        val factory = RepoDataSourceFactory(githubService)
+        val factory = RepoDataSourceFactory(githubService, keyword)
         val config = PagedList.Config.Builder()
             .setInitialLoadSizeHint(20)
             .setPageSize(10)

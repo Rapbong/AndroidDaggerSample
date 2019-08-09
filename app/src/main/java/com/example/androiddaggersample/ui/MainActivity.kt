@@ -5,6 +5,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.paging.PagedList
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.androiddaggersample.databinding.ActivityMainBinding
@@ -35,6 +36,7 @@ class MainActivity : DaggerAppCompatActivity() {
 
         recycler_view.adapter = adapter
         recycler_view.layoutManager = layoutManager
+        recycler_view.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
 
         viewModel.searchLiveData.observe(this, Observer<PagedList<Repo>> {
             adapter.submitList(it)

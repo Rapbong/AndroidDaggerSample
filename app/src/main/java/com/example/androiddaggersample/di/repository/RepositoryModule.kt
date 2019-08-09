@@ -31,12 +31,6 @@ class RepositoryModule {
 
     @Singleton
     @Provides
-    fun provideDataSource(githubService: GithubService): DataSource<Int, Repo> {
-        return RepoDataSource(githubService)
-    }
-
-    @Singleton
-    @Provides
     fun provideHttpClient(): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(HttpLoggingInterceptor())

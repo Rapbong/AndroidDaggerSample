@@ -12,7 +12,7 @@ class MainViewModel @Inject constructor(private val repository: GithubRepository
 
     private val repoLiveData = MutableLiveData<String>()
     val searchLiveData = Transformations.switchMap(repoLiveData) {
-        repository.onload()
+        repository.search(it)
     }
 
     fun onClick() {
