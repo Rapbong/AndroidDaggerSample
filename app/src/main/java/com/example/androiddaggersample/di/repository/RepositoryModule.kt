@@ -1,9 +1,6 @@
 package com.example.androiddaggersample.di.repository
 
-import androidx.paging.DataSource
-import com.example.androiddaggersample.repository.RepoDataSource
 import com.example.androiddaggersample.repository.data.GithubService
-import com.example.androiddaggersample.repository.data.Repo
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient

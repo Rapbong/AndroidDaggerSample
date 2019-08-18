@@ -1,13 +1,10 @@
 package com.example.androiddaggersample.repository
 
-import androidx.paging.DataSource
 import androidx.paging.PageKeyedDataSource
-import com.example.androiddaggersample.di.DaggerAppComponent
 import com.example.androiddaggersample.repository.data.GithubService
 import com.example.androiddaggersample.repository.data.Repo
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import javax.inject.Inject
 
 class RepoDataSource (private val githubService: GithubService, private val keyword: String) : PageKeyedDataSource<Int, Repo>() {
     override fun loadInitial(params: LoadInitialParams<Int>, callback: LoadInitialCallback<Int, Repo>) {
